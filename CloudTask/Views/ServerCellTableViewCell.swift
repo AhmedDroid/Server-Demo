@@ -21,7 +21,9 @@ class ServerCellTableViewCell: UITableViewCell {
     @IBOutlet weak var serverGateway: UILabel!
     @IBOutlet weak var serverName: UILabel!
     @IBOutlet weak var serverLocation: UILabel!
+    @IBOutlet weak var serverImage: UIImageView!
     
+    @IBOutlet weak var holderView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,4 +36,16 @@ class ServerCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func loadViewsWith(data: Content) {
+        serverImage.layer.cornerRadius = serverImage.frame.size.width/2
+        serverImage.clipsToBounds = true
+        serverIP.text = data.ipAddress
+        serverGateway.text = data.ipSubnetMask
+        serverName.text = data.name
+        serverFlags.text = "CPU 100%"
+}
+    
+//    func layoutSubviews() {
+//
+//    }
 }

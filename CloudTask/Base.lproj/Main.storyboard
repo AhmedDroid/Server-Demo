@@ -57,23 +57,6 @@
             </objects>
             <point key="canvasLocation" x="708" y="-630.13493253373315"/>
         </scene>
-        <!--Detail-->
-        <scene sceneID="yUG-lL-AsK">
-            <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="CloudTask" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="709" y="129"/>
-        </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
             <objects>
@@ -99,12 +82,47 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
+                        <segue destination="Ceq-P4-0zb" kind="relationship" relationship="rootViewController" id="9pN-Ji-tdl"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="QBC-yk-g5B">
+            <objects>
+                <viewController id="Ceq-P4-0zb" customClass="DetailViewController" customModule="CloudTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vrl-JB-Gqc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Lf-i5s">
+                                <rect key="frame" x="10" y="64" width="355" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ceq-P4-0zb" id="bh1-2N-5Gy"/>
+                                    <outlet property="delegate" destination="Ceq-P4-0zb" id="Mpe-Qq-FPR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yaI-Lf-i5s" firstAttribute="trailing" secondItem="EHO-mZ-Yc2" secondAttribute="trailing" constant="-10" id="63n-ea-Uhs"/>
+                            <constraint firstItem="EHO-mZ-Yc2" firstAttribute="bottom" secondItem="yaI-Lf-i5s" secondAttribute="bottom" id="7jS-4c-t78"/>
+                            <constraint firstItem="yaI-Lf-i5s" firstAttribute="top" secondItem="EHO-mZ-Yc2" secondAttribute="top" id="Hyu-Bz-v72"/>
+                            <constraint firstItem="yaI-Lf-i5s" firstAttribute="leading" secondItem="EHO-mZ-Yc2" secondAttribute="leading" constant="10" id="R6I-cc-gEo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EHO-mZ-Yc2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Zt-LG-4rU"/>
+                    <connections>
+                        <outlet property="tableView" destination="yaI-Lf-i5s" id="Aie-1p-cE9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jZw-Ws-I1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="127.28635682158921"/>
         </scene>
     </scenes>
     <resources>
