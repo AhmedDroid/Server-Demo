@@ -106,7 +106,7 @@
                             </activityIndicatorView>
                             <tableView hidden="YES" clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Lf-i5s">
                                 <rect key="frame" x="10" y="126" width="355" height="541"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ceq-P4-0zb" id="bh1-2N-5Gy"/>
                                     <outlet property="delegate" destination="Ceq-P4-0zb" id="Mpe-Qq-FPR"/>

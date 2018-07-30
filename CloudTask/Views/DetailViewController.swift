@@ -12,7 +12,9 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var tableView: UITableView!
     var pageIndex = 0
-    var content: BaseObjectMapper = BaseObjectMapper()
+    var isUpdating = false
+    var baseObjMapper: BaseObjectMapper = BaseObjectMapper()
+    var dataArr = [Content]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         APIController.inst.getDataFromAPI(pageIndex: pageIndex) { data, err in
             if (err == nil && data != nil) {
                 // success we should have the data ready here
-                self.content = data!
+                self.baseObjMapper = data!
+                self.dataArr = self.baseObjMapper.content!
                 
                 UIView.animate(withDuration: 0.4, animations: {
                     self.tableView.alpha = 1.0
@@ -41,13 +44,13 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = (tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath) as! ServerCellTableViewCell)
-        cell.loadViewsWith(data: content.content![indexPath.row])
+        cell.loadViewsWith(data: self.dataArr[indexPath.row])
         
         return cell
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return content.size ?? 0
+        return self.dataArr.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,5 +64,33 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if ((tableView.contentOffset.y + tableView.frame.size.height) >= tableView.contentSize.height)
+            {
+                if !isUpdating {
+                    isUpdating = true
+                    self.pageIndex += 1
+                    self.startPaging()
+                }
+            }
+    }
+    
+    func startPaging() {
+        APIController.inst.getDataFromAPI(pageIndex: pageIndex) { data, err in
+            if (err == nil && data != nil) {
+                // success we should have the data ready here
+                self.baseObjMapper = data!
+                
+                if let data = data?.content {
+                    data.forEach({ (cont) in
+                        self.dataArr.append(cont)
+                    })
+                }
+                
+                self.tableView.reloadData()
+                self.isUpdating = false
+            }
+        }
+    }
 }
-
