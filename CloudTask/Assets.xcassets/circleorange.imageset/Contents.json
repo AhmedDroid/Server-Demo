@@ -2,12 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ringernotselected.png",
+      "filename" : "icons8-circled-up-right-80 (2).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "ringernotselected@2x.png",
       "scale" : "2x"
     },
     {

@@ -21,6 +21,12 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if (err == nil && data != nil) {
                 // success we should have the data ready here
                 self.content = data!
+                
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.tableView.alpha = 1.0
+                    self.tableView.isHidden = false
+                })
+                
                 self.tableView.register(UINib(nibName: "ServerCellTableViewCell", bundle: nil), forCellReuseIdentifier: "dataCell")
                 self.tableView.reloadData()
             }

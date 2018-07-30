@@ -37,12 +37,27 @@ class ServerCellTableViewCell: UITableViewCell {
     }
     
     public func loadViewsWith(data: Content) {
-        serverImage.layer.cornerRadius = serverImage.frame.size.width/2
-        serverImage.clipsToBounds = true
         serverIP.text = data.ipAddress
         serverGateway.text = data.ipSubnetMask
         serverName.text = data.name
         serverFlags.text = "CPU 100%"
+        serverFlags.textColor = UIColor.white
+        serverFlags.layer.cornerRadius = 18
+        serverFlags.layer.borderWidth = 0.5
+        serverFlags.layer.borderColor = UIColor.darkGray.cgColor
+        if (data.status?.id == 1) {
+            // green
+            serverIndicatorColor.image = UIImage(named: "circlegreen")
+        } else if (data.status?.id == 2) {
+            // orange
+            serverIndicatorColor.image = UIImage(named: "circleorange")
+        } else if (data.status?.id == 3) {
+            // yellow
+            serverIndicatorColor.image = UIImage(named: "circleyellow")
+        } else {
+            // red
+            serverIndicatorColor.image = UIImage(named: "circlered")
+        }
 }
     
 //    func layoutSubviews() {
